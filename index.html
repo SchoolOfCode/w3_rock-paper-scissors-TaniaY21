@@ -1,16 +1,50 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-<head>
-<link rel="stylesheet" href="rps.css">
 
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Rock, Paper, Scissors</title>
 </head>
+
 <body>
-    <button onclick="gameFunction(this.id)" id="rock" >Rock</button>
-    <button onclick="gameFunction(this.id)" id="paper">Paper</button>
-    <button onclick="gameFunction(this.id)" id="scissors">Scissors</button>    
-    <!-- <button onclick="rockFunction()" id="rock" >Rock</button>
-    <button onclick="paperFunction()" id="paper">Paper</button>
-    <button onclick="scissorsFunction()" id="scissors">Scissors</button> -->
-    <script src="main.js" type="text/javascript"></script>
+  <h1>Rock, Paper, or Scissors?</h1>
+  <p>
+    A steam-powered bot has challenged you to a game.
+    <strong>Rock</strong> beats <strong>scissors</strong>,
+    <strong>scissors</strong> beats <strong>paper</strong>, and
+    <strong>paper</strong> beats <strong>rock</strong>. Use your paws to win!
+  </p>
+
+  <section class="flex-container-scoreboard">
+    <div class="scoreboard">
+      <h2>Scoreboard</h2>
+      <table>
+        <tbody>
+          <tr>
+            <td id="humanScore">0</td>
+            <td id="computerScore">0</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>You</th>
+            <th>Bot</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </section>
+
+  <h2 id="game-update">Choose Wisely</h2>
+
+  <div class="choices-container">
+    <img id="paper" src="/images/paper-cat.png" alt="" />
+    <img id="rock" src="/images/rock-cat.png" alt="" />
+    <img id="scissors" src="/images/scissors-cat.png" alt="" />
+  </div>
+
+  <script src="main.js"></script>
 </body>
+
 </html>

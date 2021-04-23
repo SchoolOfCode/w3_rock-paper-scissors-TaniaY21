@@ -1,0 +1,70 @@
+  
+   
+    body {
+           display: block;
+           margin: 8px;
+       }
+       body{
+        background-color: #FFE3DB;
+    }
+    
+    h1{
+        text-align: center;
+    }
+    
+    h2 {
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    p {
+        text-align: center;
+    }
+    
+    .flex-container-scoreboard{
+        display: flex;
+        justify-content: center;
+    }
+    
+    .scoreboard {
+        border-style: double;
+        border-color: black(7, 156, 7);
+        size: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    
+    .choices-container{
+    display: flex;
+    justify-content: space-around;
+    }
+    
+    .green-glow{
+        border-style: double;
+        border-color: rgb(7, 156, 7);
+        size: 5px;
+    }
+    
+    
+    .red-glow{
+        border-style: double;
+        border-color: red;
+        size: 5px;
+    }
+    
+    .black-glow{
+        border-style: double;
+        border-color: black;
+        size: 5px;
+    }
+    img {
+        border-radius: 8px;
+        width: 150;
+        height: 300px;
+      }
+    
+    
+    
+      
