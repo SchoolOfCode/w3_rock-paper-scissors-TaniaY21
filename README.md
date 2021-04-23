@@ -38,7 +38,7 @@ function compareMoves() {
 
 After looking at some code online and another tutorial, I realised that in this case it would be better to use `switch` statements instead. What was **REALLY** interesting was that the switch statement should take **TWO EXPRESSIONS** and have the value for each expression combined in each case.... crazy! 🤯
 
-```` javascript
+```javascript
 function compareMoves(userInput) {
   let computerMove = generateComputerMove();
   let humanMove = userInput;
@@ -49,9 +49,7 @@ function compareMoves(userInput) {
     case "scissorspaper":
       userWins(userInput, computerMove);
       break;
-````
-
-
+```
 
 ## Better way of generating computer move
 
@@ -80,4 +78,16 @@ function generateComputerMove() {
   return moves[randomNumber];
 }
 ```
+
+## Applying classes to user input!!
+
+From an online tutorial I found out you can add a class to a function parameter (in this case `human`). I also learned about the `setTimeout()` function to remove or add things after a certain time period.
+
+```javascript
+function userWins(human, computer) {
+  document.getElementById(human).classList.add('green-glow');
+  setTimeout(function () {
+    document.getElementById(human).classList.remove('green-glow') }, 500);
+```
+
 Overall I learned a lot, just wish I wasn't so stressed out over it!
