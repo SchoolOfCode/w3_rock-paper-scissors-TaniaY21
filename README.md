@@ -1,3 +1,8 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2b437e93-9d41-42ab-8e3c-b412df89b778/deploy-status)](https://app.netlify.com/sites/practical-meitner-2bf7bd/deploys)
+
+[LIVE WEBSITE](https://rpssoc.netlify.app/)
+
+
 # Things I learned:
 
 ## `If` VS `switch` statements
