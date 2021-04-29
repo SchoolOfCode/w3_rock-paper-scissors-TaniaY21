@@ -1,9 +1,50 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="styles.css" />
-    <title>Rock, Paper, Scissors</title>
-  </head>
-  <body></body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Rock, Paper, Scissors</title>
+</head>
+
+<body>
+  <h1>Rock, Paper, or Scissors?</h1>
+  <p>
+    A steam-powered bot has challenged you to a game.
+    <strong>Rock</strong> beats <strong>scissors</strong>,
+    <strong>scissors</strong> beats <strong>paper</strong>, and
+    <strong>paper</strong> beats <strong>rock</strong>. Use your paws to win!
+  </p>
+
+  <section class="flex-container-scoreboard">
+    <div class="scoreboard">
+      <h2>Scoreboard</h2>
+      <table>
+        <tbody>
+          <tr>
+            <td id="humanScore">0</td>
+            <td id="computerScore">0</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>You</th>
+            <th>Bot</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </section>
+
+  <h2 id="game-update">Choose Wisely</h2>
+
+  <div class="choices-container">
+    <img id="paper" src="/images/paper-cat.png" alt="" />
+    <img id="rock" src="/images/rock-cat.png" alt="" />
+    <img id="scissors" src="/images/scissors-cat.png" alt="" />
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
 </html>
