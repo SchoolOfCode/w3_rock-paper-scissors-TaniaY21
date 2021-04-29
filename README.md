@@ -1,98 +1,98 @@
-# Rock, Paper, Scissors!
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2b437e93-9d41-42ab-8e3c-b412df89b778/deploy-status)](https://app.netlify.com/sites/practical-meitner-2bf7bd/deploys)
 
-Work through the tasks below **one by one**. Make sure you have completed each task before moving on to the next. Some steps will require you to change code you've already written.
+[LIVE WEBSITE](https://rpssoc.netlify.app/)
 
-## Task 1: Logic
 
-To complete this ticket you will need to write a set of if statements in [main.js](main.js) that will determine the winner of rock, paper, scissors.
+# Things I learned:
 
-We will hard-code each move in variables so that we can check our game logic, but will later delete these and instead use function parameters.
+## `If` VS `switch` statements
 
-```js
-// change these variables to test your code
-let playerMove = "rock";
-let computerMove = "paper";
-```
+Originally I had written the logic for keeping score as a long list of `if` statements:
 
-Plan out the possible combinations of rock, paper and scissors for the two moves. Then convert that logic to code and console.log the result of the game.
+```javascript
+function compareMoves() {
+  if (computerMove === humanMove) {
+    game_update.innerText = `That's a tie! Bot picked ${computerMove}`;
+  }
+  if (humanMove === "rock") {
+    if (computerMove === "scissors") {
+      humanScore++;
+      game_update.innerText = `You win! Bot picked ${computerMove}`;
+    } else if (computerMove === "paper") {
+      computerScore++;
+      game_update.innerText = `You lose! Bot picked ${computerMove}`;
+    }
+  }
+  if (humanMove === "paper") {
+    if (computerMove === "rock") {
+      humanScore++;
+    } else if (computerMove === "scissors") {
+      computerScore++;
+    }
+  }
 
-This will be deemed as complete when all permutations of the three possible moves for each player have been handled correctly, e.g. rock vs rock is a draw, paper vs rock is a paper win, etc.
-
-## Task 2: Function
-
-Take the if statements that you've written and tested and put them into a function. The variables from before should now be taken in as parameters so that you can call the function with any two moves. Instead of printing the result to the console, the function should return:
-
-- `1` if player1 wins
-- `0` if it is a draw
-- `-1` if player1 loses (player2 wins)
-
-The function should be able to be used like so:
-
-```js
-function getWinner(player1, player2) {
-  // code goes here...
+  if (humanMove === "scissors") {
+    if (computerMove === "paper") {
+      humanScore++;
+    } else if (computerMove === "rock") {
+      computerScore++;
+    }
+  }
 }
-
-let result = getWinner("rock", "paper");
 ```
 
-This will be deemed as complete when the function can be called with any combination of valid moves and returns the appropriate number.
+After looking at some code online and another tutorial, I realised that in this case it would be better to use `switch` statements instead. What was **REALLY** interesting was that the switch statement should take **TWO EXPRESSIONS** and have the value for each expression combined in each case.... crazy! 🤯
 
-## Task 3: User Input
+```javascript
+function compareMoves(userInput) {
+  let computerMove = generateComputerMove();
+  let humanMove = userInput;
 
-Using `prompt`, get a user-inputted value for the player move. Then call your function with that value as the player move and the hard-coded computer move. Display the result using `alert`.
+  switch (userInput + computerMove) {
+    case "rockscissors":   // this was so cool!
+    case "paperrock":
+    case "scissorspaper":
+      userWins(userInput, computerMove);
+      break;
+```
 
-This will be deemed as complete when you can input any move for the player move and hard-code any move for the computer move and see the correct result (1, 0, or -1) in the alert.
+## Better way of generating computer move
 
-## Task 4: Computer Player
+Initially I just generated the range of numbers, and then went through three `if` statements in order to assign a value of rock, paper or scissors to each random number.
 
-Write a function that generates a random computer move. Use that function to make a dynamic game where the computer move is randomly chosen every time instead of being hard-coded.
+```javascript
+function generateComputerMove() {
+  let randomNumber = Math.floor(Math.random() * 3);
+  if (number === 0) {
+    value = "rock";
+  } else if (number === 1) {
+    value = "paper";
+  } else {
+    value = "scissors";
+  }
+  return value;
+}
+```
 
-<details>
-<summary>Hint</summary>
-`Math.random()` might be useful!
-</details>
+I am not sure what this type of syntax is called, but after looking online I realised I can put the `randomNumber` in brackets `[]` instead. Still not sure how it actually works but it works and makes the code shorter:
 
-This will be deemed as complete when the player can input any move in the prompt, the computer move is chosen by random, and the correct result shows in the alert.
+```javascript
+function generateComputerMove() {
+  let moves = ["rock", "paper", "scissors"];
+  let randomNumber = Math.floor(Math.random() * 3);
+  return moves[randomNumber];
+}
+```
 
-## Task 5: Game Loop
+## Applying classes to user input!!
 
-Now that we have a fully functioning game, our next step is to have it run as many times as people would like to play without having to refresh the page.
+From an online tutorial I found out you can add a class to a function parameter (in this case `human`). I also learned about the `setTimeout()` function to remove or add things after a certain time period.
 
-Use a `while loop` and `confirm`.
+```javascript
+function userWins(human, computer) {
+  document.getElementById(human).classList.add('green-glow');
+  setTimeout(function () {
+    document.getElementById(human).classList.remove('green-glow') }, 500);
+```
 
-This will be deemed as complete when a player can keep playing indefinitely and has the option to stop playing after every round.
-
-## Task 6: Scores
-
-Keep track of how many games have been played, as well as the number of wins, losses, and draws.
-
-This will be deemed as complete when this information is displayed after each round.
-
-## Task 7: DOM
-
-Refactor your application so that all interactions are through HTML elements in [index.html](index.html) rather than `confirm`, `alert` and `prompt`. Using the DOM allows our game to be event-driven, so you may want to remove the while loop and instead compute the winner when an event is fired.
-
-This will be deemed as complete when `confirm`, `alert` and `prompt` are no longer used, user interaction is handled with HTML elements, and all the information is displayed on the page.
-
-## Task 8: Validation
-
-Create a username `input` field and use the username the player inputs in the game so that a player can see their name on the page when looking at where the scores are displayed.
-
-To make it more uniform, restrict the number of characters a username can be to 10 or fewer.
-
-This will be deemed as complete when the users cannot enter a username longer than 10 characters.
-
-🌟 BONUS: Make it so that valid usernames should only start with letters, not numbers or symbols.  
-🌟 EXTRA BONUS: Make it so that the first letter of the username should be capitalised.
-
-## Task 9: Style, Animation and User Experience
-
-Use CSS to add some style, flair, and animation to the playing experience on the page. Be creative! ✨ Keep in mind your user and make their experience as easy and enjoyable as possible.
-
-Some resources:
-
-- [Animations](https://animista.net/)
-- [Colour schemes](https://coolors.co/generate)
-- [Gradients](https://uigradients.com/)
-- [Box shadows](https://getcssscan.com/css-box-shadow-examples)
+Overall I learned a lot, just wish I wasn't so stressed out over it!
